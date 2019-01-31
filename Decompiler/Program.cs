@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -284,6 +284,7 @@ namespace Decompiler
                             break;
                         case ResourceType.Particle:
                         case ResourceType.Mesh:
+                        case ResourceType.SoundEventScriptKv3:
                             //Wrap it around a KV3File object to get the header.
                             data = Encoding.UTF8.GetBytes(new ValveResourceFormat.KeyValues.KV3File(((BinaryKV3)resource.Blocks[BlockType.DATA]).Data).ToString());
                             break;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
@@ -542,6 +542,7 @@ namespace GUI
                             {
                                 case ResourceType.Particle:
                                 case ResourceType.Mesh:
+                                case ResourceType.SoundEventScriptKv3:
                                     //Wrap it around a KV3File object to get the header.
                                     control.Text = NormalizeLineEndings(new KV3File(((BinaryKV3)block.Value).Data).ToString());
                                     break;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -215,6 +215,20 @@ namespace ValveResourceFormat
                             }
                         }
 
+                        if (ResourceType == ResourceType.Unknown && EditInfo.Structs.ContainsKey(ResourceEditInfo.REDIStruct.InputDependencies))
+                        {
+                            var inputDeps = (InputDependencies)EditInfo.Structs[ResourceEditInfo.REDIStruct.InputDependencies];
+
+                            if (inputDeps.List.Count > 0)
+                            {
+                                var extension = Path.GetExtension(inputDeps.List[0].ContentRelativeFilename);
+                                if (extension == ".vsndevts")
+                                {
+                                    ResourceType = ResourceType.SoundEventScriptKv3;
+                                }
+                            }
+                        }
+
                         break;
 
                     case BlockType.NTRO:
@@ -287,6 +301,9 @@ namespace ValveResourceFormat
 
                 case ResourceType.SoundEventScript:
                     return new SoundEventScript();
+
+                case ResourceType.SoundEventScriptKv3:
+                    return new BinaryKV3();
 
                 case ResourceType.EntityLump:
                     return new EntityLump();

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace ValveResourceFormat
 {
@@ -67,6 +67,9 @@ namespace ValveResourceFormat
 
         [Extension("vsndevts")]
         SoundEventScript,
+
+        [Extension("vsndevts")]
+        SoundEventScriptKv3,
 
         [Extension("vsndstck")]
         SoundStackScript,
