@@ -232,7 +232,7 @@ namespace ValveResourceFormat
                         break;
 
                     case BlockType.NTRO:
-                        if (ResourceType == ResourceType.Unknown && IntrospectionManifest.ReferencedStructs.Count > 0)
+                        if ((ResourceType == ResourceType.Unknown || ResourceType == ResourceType.SoundEventScriptKv3) && IntrospectionManifest.ReferencedStructs.Count > 0)
                         {
                             switch (IntrospectionManifest.ReferencedStructs[0].Name)
                             {
